@@ -16,20 +16,12 @@ import java.util.List;
 public class Program {
     public static void main(String[] args) {
         
-        Product twix = new Food("twix", 2, 5, new GregorianCalendar(2023, 8, 19), 25.5);
-        Product baunty = new Food("baunty", 3, 4, new GregorianCalendar(2023, 9, 14), 100.5);
-        Product sneck = new Food("sneck", 4, 2, new GregorianCalendar(2023, 11, 25), 75);
-        Product cola = new Beverages("cola", 3, 1, new GregorianCalendar(2024, 9, 14), 0.5);
-        Product coffee = new HotDrinks("d'ore", 4, 2, new GregorianCalendar(2023, 8, 25), 250, 75);
-        Product tea = new HotDrinks("lipton", 1, 2, new GregorianCalendar(2023, 7, 28), 250, 80);
-        Product hotChocolate = new HotDrinks("white hot chocolate", 2, 1, new GregorianCalendar(2023, 7, 27), 300, 75);
-        
         Automat list = new Automat();
         List<Product> myList = new ArrayList<>();
-        myList.add(twix);
-        myList.add(baunty);
-        myList.add(sneck);
-        myList.add(cola);
+        myList.add(new Food("twix", 2, 5, new GregorianCalendar(2023, 8, 19), 25.5));
+        myList.add(new Food("baunty", 3, 4, new GregorianCalendar(2023, 9, 14), 100.5));
+        myList.add(new Food("sneck", 4, 2, new GregorianCalendar(2023, 11, 25), 75));
+        myList.add(new Beverages("cola", 3, 1, new GregorianCalendar(2024, 9, 14), 0.5));
         list.initProducts(myList);
 
         String name = "sneck";
@@ -37,9 +29,9 @@ public class Program {
 
         HotDrinksAutomat list2 = new HotDrinksAutomat();
         List<HotDrinks> myList2 = new ArrayList<>();
-        myList2.add((HotDrinks)coffee);
-        myList2.add((HotDrinks)tea);
-        myList2.add((HotDrinks)hotChocolate);
+        myList2.add((HotDrinks)new HotDrinks("d'ore", 4, 2, new GregorianCalendar(2023, 8, 25), 250, 75));
+        myList2.add((HotDrinks)new HotDrinks("lipton", 1, 2, new GregorianCalendar(2023, 7, 28), 250, 80););
+        myList2.add((HotDrinks)new HotDrinks("white hot chocolate", 2, 1, new GregorianCalendar(2023, 7, 27), 300, 75));
 
         list2.initHotDrinks(myList2);
         System.out.println(list2.getProduct("d'ore", 250, 75));
