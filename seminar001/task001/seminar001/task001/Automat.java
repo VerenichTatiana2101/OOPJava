@@ -1,5 +1,4 @@
 package seminar001.task001;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,19 +27,21 @@ public class Automat {
     }
 
 
-    public Order createOrderList(List<Product> shoppingList, Automat list, Human man) {
+    public Order createOrderList(List<Product> shoppingList, Human buyer) {
         int checkList = 0;
-        for (Product productmy : shoppingList) {
-            if(getProduct(productmy.getName()).getQuantity() > 0){
-                checkList += getProduct(productmy.getName()).getPrice();
+        for (Product myProduct : shoppingList) {
+            if(getProduct(myProduct.getName()).getQuantity() > 0){
+                checkList += getProduct(myProduct.getName()).getPrice();
             }
             else{
-                shoppingList.remove(productmy);
+                shoppingList.remove(myProduct);
             }
         }
         Order order = new Order();
-        order.setMan(man);
+        order.setCheck(checkList);
+        order.setMan(buyer);
         order.setList(shoppingList);
+        
         return order;
     }
 }

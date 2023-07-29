@@ -4,7 +4,7 @@ public class Duck extends Birds implements Swimable, Comparable<Duck>{
 
     @Override
     public void fly(int distance) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'fly'");
     }
 
@@ -15,13 +15,13 @@ public class Duck extends Birds implements Swimable, Comparable<Duck>{
 
     @Override
     public void swim(int distance) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'swim'");
     }
 
     @Override
     public int compareTo(Duck o) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 

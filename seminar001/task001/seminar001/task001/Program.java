@@ -1,4 +1,5 @@
 package seminar001.task001;
+
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Program {
         HotDrinksAutomat list2 = new HotDrinksAutomat();
         List<HotDrinks> myList2 = new ArrayList<>();
         myList2.add((HotDrinks)new HotDrinks("d'ore", 4, 2, new GregorianCalendar(2023, 8, 25), 250, 75));
-        myList2.add((HotDrinks)new HotDrinks("lipton", 1, 2, new GregorianCalendar(2023, 7, 28), 250, 80););
+        myList2.add((HotDrinks)new HotDrinks("lipton", 1, 2, new GregorianCalendar(2023, 7, 28), 250, 80));
         myList2.add((HotDrinks)new HotDrinks("white hot chocolate", 2, 1, new GregorianCalendar(2023, 7, 27), 300, 75));
 
         list2.initHotDrinks(myList2);
