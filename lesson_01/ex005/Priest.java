@@ -12,7 +12,7 @@ public class Priest {
     private int maxHp;
 
     private int elixir;
-    private int maxElixir;
+    //private int maxElixir;
 
     static {
         Priest.number = 0;
@@ -24,17 +24,17 @@ public class Priest {
         this.hp = hp;
         this.maxHp = hp;
         this.elixir = elixir;
-        this.maxElixir = elixir;
+        //this.maxElixir = elixir;
     }
 
     public Priest() {
         this(String.format(HERO_PRIEST_D, ++Priest.number),
-        Priest.r.nextInt(100, 200),
-        Priest.r.nextInt(50, 150));
+        Priest.r.nextInt(100),
+        Priest.r.nextInt(50));
     }
 
     public int Attack() {
-        int damage = Priest.r.nextInt(20, 30);
+        int damage = Priest.r.nextInt(20);
         this.elixir -= (int)(damage * 0.8);
         if (elixir < 0) return 0;
         else return damage;

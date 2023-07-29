@@ -11,7 +11,7 @@ public class Magician {
     private int maxHp;
 
     private int mana;
-    private int maxMana;
+    //private int maxMana;
 
     static {
         Magician.number = 0;
@@ -23,17 +23,17 @@ public class Magician {
         this.hp = hp;
         this.maxHp = hp;
         this.mana = mana;
-        this.maxMana = mana;
+        //this.maxMana = mana;
     }
 
     public Magician() {
         this(String.format("Hero_Magician #%d", ++Magician.number),
-                Magician.r.nextInt(100, 200),
-                Magician.r.nextInt(50, 150));
+                Magician.r.nextInt(100),
+                Magician.r.nextInt(50));
     }
 
     public int Attack() {
-        int damage = Magician.r.nextInt(20, 30);
+        int damage = Magician.r.nextInt(20);
         this.mana -= (int)(damage * 0.8);
         if (mana < 0) return 0;
         else return damage;

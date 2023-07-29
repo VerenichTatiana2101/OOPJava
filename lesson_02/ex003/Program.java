@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import lesson_02.ex003.alliance.*;
-import lesson_02.ex003.*;
+//import lesson_02.ex003.*;
 
 public class Program {
     public static void main(String[] args) {
@@ -30,7 +30,7 @@ public class Program {
                     teams.add(new Druid());
                     break;
                 default:
-                     teams.add(new BaseHero());
+                    // teams.add(new BaseHero());
                     break;
             }
             System.out.println(teams.get(i).getInfo());
@@ -70,7 +70,7 @@ public class Program {
         // #endregion
 
         // #region
-        BaseHero dh = new Druid();
+        //BaseHero dh = new Druid();
         /*BaseHero*/
         Dwarf dwarf = new Dwarf();
         //dwarf.dwarf_method();
