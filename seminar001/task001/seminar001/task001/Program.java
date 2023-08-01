@@ -1,8 +1,10 @@
 package seminar001.task001;
+import seminar002.ex002.User;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+
 /**
  * В класс Beverage добавить поле объем (double volume), а в класс Food - масса (double weight), 
  * добавить заполнение в конструктор, добавтиь их в вывод toString()
@@ -15,6 +17,10 @@ import java.util.List;
  */
 
 public class Program {
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         
         Automat list = new Automat();
@@ -37,5 +43,12 @@ public class Program {
         list2.initHotDrinks(myList2);
         System.out.println(list2.getProduct("d'ore", 250, 75));
 
+        User user = new User();
+        user.choise();
+        //user.userCh(5);
+        user.comparingChoise(user.userCh(5), myList, myList2);
+
+        
     }
+
 }
