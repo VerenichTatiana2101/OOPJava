@@ -1,9 +1,8 @@
 package seminar002.ex002;
-
-import java.util.ArrayList;
-import java.util.List;
 import seminar001.task001.Automat;
 import seminar001.task001.Product;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Human extends Actor {
     private double money;
@@ -14,26 +13,6 @@ public class Human extends Actor {
         this.money = money;
     }
 
-    @Override
-    public void setMakeOrder(boolean isMade) {
-
-    }
-
-    @Override
-    public void setTakeOrder(boolean isTook) {
-
-    }
-
-    @Override
-    public boolean getTookOrder() {
-        return false;
-    }
-
-    @Override
-    public boolean getMadeOrder() {
-        return false;
-    }
-
     public double getMoney() {
         return money;
     }
@@ -42,8 +21,26 @@ public class Human extends Actor {
         this.money = money;
     }
 
-    public void setNearestAutomat(Automat list) {
-        this.nearestAutomat = list;
+    @Override
+    public void setMakeOrder(boolean isMade) {
+    }
+
+    @Override
+    public void setTakeOrder(boolean isTook) {
+    }
+
+    @Override
+    public boolean getTookOrder() {
+        return true;
+    }
+
+    @Override
+    public boolean getMadeOrder() {
+        return true;
+    }
+
+    public void setNearestAutomat(Automat nearestAutomat) {
+        this.nearestAutomat = nearestAutomat;
     }
 
     public Automat getAutomat() {
@@ -51,17 +48,22 @@ public class Human extends Actor {
     }
 
     @Override
-    public Order makeOrder(List<String> deList, Human buyer) {
+    public Order makeOrder(List<String> list, Automat nearestAutomat, Human buyer) {
         ArrayList<Product> shoppingList = new ArrayList<>();
         Product shoppingProduct;
-        for (String nameProduct : deList) {
+        for (String nameProduct : list) {
             shoppingProduct = nearestAutomat.getProduct(nameProduct);
             if (shoppingProduct != null) {
                 shoppingList.add(shoppingProduct);
             }
         }
-        setMakeOrder(true);
-        return nearestAutomat.createOrderList(shoppingList, buyer);
+        buyer.setMakeOrder(true);
+        return nearestAutomat.createOrder(shoppingList, nearestAutomat, buyer);
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.getName() + "\nCash: " + money;
     }
 
 }

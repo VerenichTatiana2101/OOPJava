@@ -1,46 +1,61 @@
 package seminar002.ex002;
-
+import seminar001.task001.Automat;
+import seminar001.task001.Product;
 import java.util.List;
 
-import seminar001.task001.Product;
-
 public class Order {
-    private List<Product> list;
+    private List<Product> productList;
+    private Automat nearestAutomat;
     private Human buyer;
-    private int check;
+    private double price;
 
-    public int getCost() {
-        return check;
+    public Order(List<Product> productList, Human buyer, Automat nearestAutomat, double price) {
+        this.productList = productList;
+        this.buyer = buyer;
+        this.nearestAutomat = nearestAutomat;
+        this.price = price;
     }
 
-    public void setCheck(int check) {
-        this.check = check;
+    public Automat getNearestAutomat() {
+        return nearestAutomat;
     }
 
-    public List<Product> getList() {
-        return list;
+    public void setNearestAutomat(Automat nearestAutomat) {
+        this.nearestAutomat = nearestAutomat;
     }
 
-    public Human getMan() {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Human getHuman() {
         return buyer;
     }
 
-    public void setList(List<Product> shoppingList) {
-        this.list = shoppingList;
+    public void setHuman(Human buyer) {
+        this.buyer = buyer;
     }
 
-    public void setMan(Human buyer) {
-        this.buyer = buyer;
+    public void setList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public List<Product> getList() {
+        return productList;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Human: ").append(buyer).append("\nProduct list:\n");
-        for (Product product : list) {
-            sb.append("Product: " + product.getName()).append("Quantity: " + product.getQuantity()).append("\n");
-        }
-        sb.append("Check amount: ").append(check);
-        return sb.toString();
+      String result = "Order [";
+      for (int index = 0; index < productList.size(); index++) {
+        result += " Product " + (index + 1) + "=" + productList.get(index).getName() + ", ";
+      }
+      return result + " Name = " + buyer.getName() + ", Total = " + price + "]";
+  
     }
+
 }
