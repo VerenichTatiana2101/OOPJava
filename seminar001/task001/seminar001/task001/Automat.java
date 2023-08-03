@@ -17,6 +17,14 @@ public class Automat {
         this.listProduct = myList;
     }
 
+    public List<Product> getListProduct() {
+        return listProduct;
+    }
+
+    public void setListProduct(List<Product> listProduct) {
+        this.listProduct = listProduct;
+    }
+
     public Product getProduct(String name) {
         for (Product product : listProduct) {
             if (product.getName().equals(name)) {
@@ -26,22 +34,50 @@ public class Automat {
         return null;
     }
 
-
-    public Order createOrderList(List<Product> shoppingList, Human buyer) {
-        int checkList = 0;
+    /**
+     * Добавить проверку в Order (validateOrder()) до оформления заказа:
+     * если заказано некоторого товара больше, чем есть в автомате,
+     * удалить этот товар из заказа (желательно в одну проходку)
+     * 
+     * @param shoppingList
+     * @param nearestAutomat
+     * @param buyer
+     * @return
+     */
+    public Order createOrder(List<Product> shoppingList, Automat nearestAutomat, Human buyer) {
+        ArrayList<Product> validatedList = new ArrayList<>();
+        Product tempProduct;
+        double checkList = 0;
         for (Product myProduct : shoppingList) {
-            if(getProduct(myProduct.getName()).getQuantity() > 0){
-                checkList += getProduct(myProduct.getName()).getPrice();
-            }
-            else{
-                shoppingList.remove(myProduct);
+            tempProduct = nearestAutomat.getProduct(myProduct.getName());
+            if (myProduct.equals(tempProduct) && nearestAutomat.getProduct(myProduct.getName()).getQuantity() > 0) {
+                validatedList.add(tempProduct);
+                checkList += nearestAutomat.getProduct(myProduct.getName()).getPrice();
+                (nearestAutomat.getProduct(myProduct.getName()))
+                        .setQuantity((nearestAutomat.getProduct(myProduct.getName())).getQuantity() - 1);
+            } else if (myProduct.equals(tempProduct)
+                    && nearestAutomat.getProduct(myProduct.getName()).getQuantity() == 0) {
+                System.out.println(myProduct.getName() + " - отсутствует в продаже");
+            } else if (myProduct.equals(tempProduct)
+                    && nearestAutomat.getProduct(myProduct.getName()).getQuantity() < myProduct.getQuantity()) {
+                System.out.println("В автомате недостаточно товара " + myProduct.getName());
             }
         }
-        Order order = new Order();
-        order.setCheck(checkList);
-        order.setMan(buyer);
-        order.setList(shoppingList);
-        
+        buyer.setTakeOrder(true);
+        Order order = new Order(validatedList, buyer, nearestAutomat, checkList);
+        buyer.setMoney(buyer.getMoney() - checkList);
         return order;
     }
+
+    @Override
+    public String toString() {
+        String result = "Automat [\n";
+        for (int i = 0; i < listProduct.size(); i++) {
+            result += listProduct.get(i);
+
+        }
+        return result + "]";
+    }
+    
+
 }
